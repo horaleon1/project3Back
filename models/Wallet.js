@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const WalletSchema = mongoose.Schema({
-  user:{
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:'users'
+    ref: "users"
   },
-  amount:{
+  amount: {
     type: String,
-    required:true
+    required: true
   }
-})
+});
 
-module.exports = mongoose.model('wallet', WalletSchema);
+module.exports = mongoose.model("wallet", WalletSchema);
