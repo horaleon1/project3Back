@@ -3,14 +3,14 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 // const { check, validationResult } = require("express-validator/check"); // password validator
 
-const User = require("../models/User");
+// const User = require("../models/User");
 const Wallet = require("../models/Wallet");
 
-// GET /contacts
-// Get all users contacts ( own contacts )
+// GET /wallets
+// Get all users wallets
 // Private page
 router.get("/", auth, async (req, res) => {
-  //res.send('Get all contacts');
+  //res.send('Get all Wallets');
   try {
     const wallets = await Wallet.find({ user: req.user.id })
     
@@ -24,22 +24,22 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// POST /contacts
-// Add new contact
+// POST /wallets
+// Add new wallet
 // Private page
 router.post("/", auth, async (req, res) => {
-  //res.send("Add contact");
+  //res.send("Add wallet");
 
   const { amount } = req.body;
 
   try {
-    const newWallet = new Contact({
+    const newWallet = new Wallet({
       amount,
       user: req.user.id
     });
 
     const wallet = await newWallet.save();
-
+   
     res.json(wallet);
   } catch (error) {
     console.error(error.message);
@@ -47,18 +47,18 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// PUT /contacts/:id
-// Update contact
+// PUT /wallets/:id
+// Update wallet
 // Private page
 router.put("/:id", auth, async (req, res) => {
-  //res.send("Update contact");
+  //res.send("Update wallet");
   
 });
-// DELETE /contacts/:id
-// Delete contact
+// DELETE /wallets/:id
+// Delete wallet
 // Private page
 router.delete("/:id", (req, res) => {
-  res.send("Delete contact");
+  res.send("Delete ");
 });
 
 module.exports = router;
