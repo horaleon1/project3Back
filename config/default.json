@@ -1,3 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://admin:admin1234@blockchain-yh6w8.mongodb.net/test?retryWrites=true&w=majority", "jwtSecret":"secret"
+  "mongoURI": "mongodb+srv://admin:admin1234@blockchain2-yh6w8.mongodb.net/test", "jwtSecret":"secret"
+
+
 }

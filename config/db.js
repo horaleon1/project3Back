@@ -8,7 +8,7 @@ const connectDB = () => {
       useNewUrlParser: true
     })
     .then(() => console.log("MongoDB is connected"))
-    .catch(err => console.log("error"));
+    .catch(err => console.log("error", err));
 };
 
 module.exports = connectDB;
