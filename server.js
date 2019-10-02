@@ -7,19 +7,28 @@ const app = express();
 //Connect Database
 connectDB();
 
-// const whitelist = [
-//   "https://blockchainp3f.herokuapp.com/",
-//   'http://blockchainp3f.herokuapp.com/'
-// ]
+const whitelist = [
+  "https://blockchainp3f.herokuapp.com/",
+  'http://blockchainp3f.herokuapp.com/'
+]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.get('/products/:id', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for a whitelisted domain.'})
+})
 
-//middlewares
-// app.use(cors({
-  
 
+// middlewares
+// app.use(cors());
 
-// }));
-
-app.use(cors());
+// app.use(cors());
 //Init Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
