@@ -7,10 +7,10 @@ const app = express();
 //Connect Database
 connectDB();
 
-const whitelist = [
-  "https://blockchainp3f.herokuapp.com/",
-  'http://blockchainp3f.herokuapp.com/'
-]
+// const whitelist = [
+//   "https://blockchainp3f.herokuapp.com/",
+//   'http://blockchainp3f.herokuapp.com/'
+// ]
 // const corsOptions = {
 //   origin: function (origin, callback) {
 //     if (whitelist.indexOf(origin) !== -1) {
@@ -21,9 +21,15 @@ const whitelist = [
 //   }
 // }
 
-app.use(cors({origin:whitelist}))
+// app.use(cors());
 
-
+app.use(cors({
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'origin': '*',
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+ }));
 
 // middlewares
 // app.use(cors());
